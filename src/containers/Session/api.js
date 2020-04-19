@@ -11,7 +11,7 @@ export const loginApi = async (credentials = {}, options = {}) => {
   }
 
   // Make the request.
-  const response = await request(`${process.env.API_BASE_URL}/login`, {
+  const response = await request(`${process.env.REACT_APP_API_URL}/login`, {
     data: credentials,
     method: 'POST',
   });
@@ -31,7 +31,7 @@ export const logoutApi = async (options = {}) => {
   }
 
   // Make the request.
-  await request(`${process.env.API_BASE_URL}/logout`, { method: 'DELETE' });
+  await request(`${process.env.REACT_APP_API_URL}/logout`, { method: 'DELETE' });
 
   // Return nothing.
   return undefined;

@@ -1,68 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# NCMA Chapter Admin Web App 🤩
 
-## Available Scripts
+## Purpose:
 
-In the project directory, you can run:
+This repo is the main codebase for the NCMA Chapter Admin web app.
 
-### `yarn start`
+#### Login Page:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Login page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412293631)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### Events List Page:
 
-### `yarn test`
+![Events page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412293632)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Create Event Page:
 
-### `yarn build`
+![Create event page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412293634)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### User profile page:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![User profile page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412869741)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting started locally:
 
-### `yarn eject`
+1. Make sure you have **Node v^10.10.0** installed (most of us use [nvm](https://github.com/nvm-sh/nvm)).
+1. Install (`brew install yarn`) or upgrade yarn to the latest version (`yarn upgrade`) and run `yarn` to install all dependencies.
+1. Run `yarn start`. The app should now be running on [localhost:3000](http://localhost:3000).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+--
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you're planning on just testing locally without actually interfacing with an API, be sure to run the command `REACT_APP_FAKE_API=true yarn start` instead of `yarn start` to mock API requests and responses client-side.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## How do I work with styles in this app?
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+We use `styled-components` (https://github.com/styled-components/styled-components), which allows you to write styles very similar to SASS/SCSS.
 
-## Learn More
+## What libraries are you using? Where can I learn more about them?
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Redux Saga (Redux middleware)](https://redux-saga.js.org/)
+- [Redux Logger (Redux debugger)](https://github.com/LogRocket/redux-logger)
+- [Styled Components (Styling)](https://styled-components.com/)
+- [Axios (Module to make HTTP requests)](https://github.com/axios/axios)
+- [ESLint (linter)](https://eslint.org/)
+- [Prettier (linter)](https://prettier.io/)
+- [Husky (pre-commit hooks)](https://github.com/typicode/husky)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Configure environment variables.
 
-### Code Splitting
+#### Current environment variables:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+1. `REACT_APP_API_URL` (The base URL of the API you want to use.)
+1. `REACT_APP_FAKE_API` (Whether you want to fake the API requests + responses.)
 
-### Analyzing the Bundle Size
+#### How to use different environment variables for development:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Open [package.json](./package.json) and modify the script `start` with any environment variables you wish to use locally. The default environment variables are inserted there already for convenience.
 
-### Making a Progressive Web App
+#### How to insert them into a build:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Run `REACT_APP_API_URL=https://api.ncmamonmouth.org REACT_APP_FAKE_API=false yarn build`.
 
-### Advanced Configuration
+## Create a production build.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+1. Run `yarn build`. Notice that this creates a `./build` folder.
+1. Upload the build folder contents to any file server (e.g. AWS S3 bucket, GCP bucket, etc.).
 
-### Deployment
+## Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+When creating a branch, please use one of the following formats:
 
-### `yarn build` fails to minify
+```
+bugfix/[githubHandle]-[ticketNumber]-[truncatedTicketTitle]
+feature/[githubHandle]-[ticketNumber]-[truncatedTicketTitle]
+refactor/[githubHandle]-[ticketNumber]-[truncatedTicketTitle]
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Please send up GitHub PRs against `master`. There's no required format for a PR description, but please consider adding a description of what your PR does, screenshots, and the acceptance criteria (if known) to aid other devs who might be reviewing it. And THANK YOU!! <3

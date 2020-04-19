@@ -12,7 +12,7 @@
     "eject": "react-scripts eject",
     "lint:fix": "eslint --ignore-path .gitignore --fix",
     "lint:fix-all": "yarn lint:fix -- .",
-    "start": "REACT_APP_FAKE_API=true react-scripts start",
+    "start": "react-scripts start",
     "test": "react-scripts test"
   },
   "eslintConfig": {
