@@ -7,8 +7,9 @@ import reduce from 'lodash/reduce';
 import slice from 'lodash/slice';
 
 // =====================
-// Artificially delay in async/await function.
+// Fake API request modules.
 // =====================
+export const FAKE_API_TIMEOUT_MS = 500;
 export const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // =====================

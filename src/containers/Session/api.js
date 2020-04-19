@@ -1,12 +1,12 @@
 // Node modules.
 import get from 'lodash/get';
 // Relative imports.
-import request, { delay } from 'utils/request';
+import request, { delay, FAKE_API_TIMEOUT_MS } from 'utils/request';
 
 export const loginApi = async (credentials = {}, options = {}) => {
   // Fake the request if desired.
   if (get(options, 'fake')) {
-    await delay(500);
+    await delay(FAKE_API_TIMEOUT_MS);
     return 'b8fa48a5-cee3-48c1-9dc9-6507893810a6';
   }
 
@@ -26,7 +26,7 @@ export const loginApi = async (credentials = {}, options = {}) => {
 export const logoutApi = async (options = {}) => {
   // Fake the request if desired.
   if (get(options, 'fake')) {
-    await delay(500);
+    await delay(FAKE_API_TIMEOUT_MS);
     return undefined;
   }
 
