@@ -56,7 +56,7 @@ export const updateVenueApi = async (venue, options = {}) => {
   // Make the request.
   const response = await request(`${process.env.REACT_APP_API_URL}/venues/${get(venue, 'id')}`, {
     body: venue,
-    method: 'POST',
+    method: 'PUT',
   });
 
   // Return the new venue.

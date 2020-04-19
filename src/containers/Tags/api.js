@@ -56,7 +56,7 @@ export const updateTagApi = async (tag, options = {}) => {
   // Make the request.
   const response = await request(`${process.env.REACT_APP_API_URL}/tags/${get(tag, 'id')}`, {
     body: tag,
-    method: 'POST',
+    method: 'PUT',
   });
 
   // Return the new tag.

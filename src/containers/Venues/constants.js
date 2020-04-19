@@ -1,3 +1,6 @@
+// Node modules.
+import uuidv4 from 'uuid/v4';
+
 // ===================
 // Actions' constants.
 // ===================
@@ -22,6 +25,6 @@ export const FAKE_VENUE = {
   address: '1590 Eisenhower Drive, Boulder, CO, 80303',
   ageRestrictions: [],
   capacity: 20,
-  id: 'b8fa48a5-cee3-48c1-9dc9-6507893810a6',
+  id: uuidv4(),
   name: 'Venue name',
 };

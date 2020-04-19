@@ -56,7 +56,7 @@ export const updateEventApi = async (event, options = {}) => {
   // Make the request.
   const response = await request(`${process.env.REACT_APP_API_URL}/events/${get(event, 'id')}`, {
     body: event,
-    method: 'POST',
+    method: 'PUT',
   });
 
   // Return the new event.

@@ -1,3 +1,6 @@
+// Node modules.
+import uuidv4 from 'uuid/v4';
+
 // ===================
 // Actions' constants.
 // ===================
@@ -19,6 +22,6 @@ export const UPDATE_TAG_SUCCESS = 'containers/Tags/UPDATE_TAG_SUCCESS';
 // Fake tag model.
 // ===================
 export const FAKE_TAG = {
-  id: 'b8fa48a5-cee3-48c1-9dc9-6507893810a6',
+  id: uuidv4(),
   title: 'An Example Tag',
 };
