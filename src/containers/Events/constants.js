@@ -28,7 +28,7 @@ export const FAKE_EVENT = {
   imageURL: `https://lh6.googleusercontent.com/proxy/azyeZBc4GFuIhJjlHdA6_m41Z8CqGQqv87roWMXtF3BOp80d5vCApAwwvNdTw8MHJw_0xbYgj8IoXG2PMejLmua9hRyi9GN-8_NIEg=w3840-h2160-p-k-no-nd-mv`,
   shortDescription: `Curabitur iaculis rhoncus sapien varius congue. Morbi a rhoncus eros, ut efficitur nunc. Nunc vel massa vitae dolor mattis rutrum. Vestibulum nulla felis, lobortis et pellentesque at, interdum vitae dui.`,
   startsAt: '2020-04-19T17:36:28.382Z',
-  tags: ['tag1', 'tag2'],
+  tagIDs: ['tag1', 'tag2'],
   title: 'An Example Event',
   venueID: 'd71b2aca-577b-463e-bdc2-40687fbae365',
 };
