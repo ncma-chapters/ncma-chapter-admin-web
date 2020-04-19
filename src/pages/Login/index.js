@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // Relative imports.
 import Spinner from 'primitives/Spinner';
-import { loginAction } from 'containers/Session/actions';
+import { loginAction } from 'containers/Sessions/actions';
 import { EmailField, LinkButton, Options, PasswordField, StyledButton, Title, Well, Wrapper } from './styles';
 
 class Login extends Component {
@@ -118,7 +118,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  loggingIn: state.sessionReducer.loggingIn,
+  loggingIn: state.sessionsReducer.loggingIn,
 });
 
 const mapDispatchToProps = (dispatch) => ({

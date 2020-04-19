@@ -1,12 +1,16 @@
 // Node modules.
 import { combineReducers } from 'redux';
 // Relative imports.
-import sessionReducer from 'containers/Session/reducer';
+import eventsReducer from 'containers/Events/reducer';
 import routesReducer from 'containers/Routes/reducer';
+import sessionsReducer from 'containers/Sessions/reducer';
+import tagsReducer from 'containers/Tags/reducer';
 
 const allReducers = combineReducers({
-  sessionReducer,
+  eventsReducer,
   routesReducer,
+  sessionsReducer,
+  tagsReducer,
 });
 
 export default allReducers;
