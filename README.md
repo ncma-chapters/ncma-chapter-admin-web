@@ -26,7 +26,7 @@ This repo is the main codebase for the NCMA Chapter Admin web app.
 1. Install (`brew install yarn`) or upgrade yarn to the latest version (`yarn upgrade`) and run `yarn` to install all dependencies.
 1. Run `yarn start`. The app should now be running on [localhost:3000](http://localhost:3000).
 
---
+<hr />
 
 If you're planning on just testing locally without actually interfacing with an API, be sure to run the command `REACT_APP_FAKE_API=true yarn start` instead of `yarn start` to mock API requests and responses client-side.
 
@@ -52,7 +52,7 @@ Run `REACT_APP_API_URL=https://api.ncmamonmouth.org REACT_APP_FAKE_API=false yar
 
 ## Architecture
 
-#### What libraries are you using? Where can I learn more about them?
+### What libraries are you using? Where can I learn more about them?
 
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
@@ -63,6 +63,8 @@ Run `REACT_APP_API_URL=https://api.ncmamonmouth.org REACT_APP_FAKE_API=false yar
 - [ESLint (linter)](https://eslint.org/)
 - [Prettier (linter)](https://prettier.io/)
 - [Husky (pre-commit hooks)](https://github.com/typicode/husky)
+
+### Can you explain the various folders?
 
 #### `assets`
 
