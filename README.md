@@ -1,5 +1,7 @@
 # NCMA Chapter Admin Web App 🤩
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/eb051cdcdd11bfc7d16a)
+
 ## Purpose:
 
 This repo is the main codebase for the NCMA Chapter Admin web app.
