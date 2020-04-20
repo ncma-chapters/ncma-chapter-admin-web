@@ -4,22 +4,6 @@
 
 This repo is the main codebase for the NCMA Chapter Admin web app.
 
-#### Login Page:
-
-![Login page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412293631)
-
-#### Events List Page:
-
-![Events page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412293632)
-
-### Create Event Page:
-
-![Create event page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412293634)
-
-### User profile page:
-
-![User profile page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412869741)
-
 ## Getting started locally:
 
 1. Make sure you have **Node v^10.10.0** installed (most of us use [nvm](https://github.com/nvm-sh/nvm)).
@@ -104,6 +88,25 @@ You will notice a `store` folder within the `./src` directory. This folder is re
 
 You will notice a `utils` folder within the `./src` directory. This folder contains modules that are used throughout the application so as to keep the code DRY. For example, this is where we have a module that handles standard API request errors (e.g. [`sagaHelpers.js`](./src/utils/sagaHelpers.js)) as well as an [API request module](./src/utils/request.js).
 
+## Design spec
+
+[Login page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412293631)
+
+[Events page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412293632)
+
+[Create event page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412293634)
+
+[User profile page](https://projects.invisionapp.com/share/M3WQ9N5HPD5#/screens/412869741)
+
+## API spec
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/eb051cdcdd11bfc7d16a)
+
+Not that you will need the following Postman environment variables:
+
+`url`: The base URL of the API (e.g. `https://api.ncma.org`).
+`token`: The token that you get after hitting `POST /login` successfully.
+
 ## Contributing
 
 When creating a branch, please use one of the following formats:
@@ -114,4 +117,6 @@ feature/[githubHandle]-[ticketNumber]-[truncatedTicketTitle]
 refactor/[githubHandle]-[ticketNumber]-[truncatedTicketTitle]
 ```
 
-Please send up GitHub PRs against `master`. There's no required format for a PR description, but please consider adding a description of what your PR does, screenshots, and the acceptance criteria (if known) to aid other devs who might be reviewing it. And THANK YOU!! <3
+Please send up GitHub PRs against `master`. There's no required format for a PR description, but please consider adding a description of what your PR does, screenshots, and the acceptance criteria (if known) to aid other devs who might be reviewing it.
+
+And THANK YOU!! ❤️
