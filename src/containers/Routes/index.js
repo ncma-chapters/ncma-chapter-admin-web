@@ -12,6 +12,7 @@ import { appInitAction } from './actions';
 
 // Lazy load pages.
 const Dashboard = lazy(() => import('pages/Dashboard'));
+const Events = lazy(() => import('pages/Events'));
 const Login = lazy(() => import('pages/Login'));
 const NotFound = lazy(() => import('pages/NotFound'));
 
@@ -36,6 +37,7 @@ class Routes extends Component {
               <Route path="/login" exact component={Login} />
               {/* AUTH MODEL-BASED ROUTES */}
               <AuthenticatedRoute path="/" exact component={Dashboard} />
+              <AuthenticatedRoute path="/events" exact component={Events} />
               {/* 404 | NOT FOUND */}
               <Route component={NotFound} />
             </Switch>

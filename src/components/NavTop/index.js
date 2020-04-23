@@ -22,9 +22,9 @@ const NavTop = ({ logout, user }) => (
         <Link className={window.location.pathname === '/events'} to="/events">
           Events
         </Link>
-        <Link className={window.location.pathname === '/tags'} to="/tags">
+        {/* <Link className={window.location.pathname === '/tags'} to="/tags">
           Tags
-        </Link>
+        </Link> */}
         <Link className={window.location.pathname === '/venues'} to="/venues">
           Venues
         </Link>
