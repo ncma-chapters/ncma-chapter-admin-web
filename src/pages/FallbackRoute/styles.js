@@ -1,7 +1,7 @@
 // Node modules.
 import styled from 'styled-components';
 // Relative imports.
-import Spinner from 'primitives/Spinner';
+import Spinner from 'components/Spinner';
 
 export const Wrapper = styled.div`
   align-items: center;

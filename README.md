@@ -75,9 +75,9 @@ You will notice a `pages` folder within the `./src` directory. Each page compone
 - `index.js` (React component that optionally connects to (a) container(s))
 - `styles.js` (A file that maintains any [`styled-component`](https://styled-components.com/) modules that are to be used **only in that page**)
 
-#### `primitives`
+#### `components`
 
-You will notice a `primitives` folder within the `./src` directory. Each primitive component should be ideally fully decoupled from the rest of the app and used 2 or more times in the other parts of the application. A primitive component maintains its own:
+You will notice a `components` folder within the `./src` directory. Each primitive component should be ideally fully decoupled from the rest of the app and used 2 or more times in the other parts of the application. A primitive component maintains its own:
 
 - `index.js` (React component that **never** connects to a container)
 - `styles.js` (A file that maintains any [`styled-component`](https://styled-components.com/) modules that are to be used **only in that component**)

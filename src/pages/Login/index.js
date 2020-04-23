@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 // Relative imports.
 import logo from 'assets/logo.svg';
-import Spinner from 'primitives/Spinner';
+import Spinner from 'components/Spinner';
 import { loginAction } from 'containers/Sessions/actions';
 import { Wrapper } from './styles';
 
