@@ -107,6 +107,7 @@ You will notice a `utils` folder within the `./src` directory. This folder conta
 Not that you will need the following Postman environment variables:
 
 `url`: The base URL of the API (e.g. `https://api.ncma.org`).
+
 `token`: The token that you get after hitting `POST /login` successfully.
 
 ## Contributing
@@ -121,4 +122,4 @@ refactor/[githubHandle]-[ticketNumber]-[truncatedTicketTitle]
 
 Please send up GitHub PRs against `master`. There's no required format for a PR description, but please consider adding a description of what your PR does, screenshots, and the acceptance criteria (if known) to aid other devs who might be reviewing it.
 
-And THANK YOU!! ❤️
+And THANK YOU for any and all contributions!! ❤️
