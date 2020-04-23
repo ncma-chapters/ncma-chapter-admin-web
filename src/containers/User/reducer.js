@@ -1,6 +1,7 @@
 // Node modules.
 import get from 'lodash/get';
 // Relative imports.
+import defaultUser from 'assets/defaultUser.svg';
 import {
   CREATE_USER,
   CREATE_USER_FAILURE,
@@ -21,7 +22,9 @@ const initialState = {
   fetching: false,
   updating: false,
   // Data.
-  user: undefined,
+  user: {
+    profileImageURL: defaultUser,
+  },
 };
 
 export default (state = initialState, action) => {

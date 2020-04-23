@@ -89,6 +89,10 @@ export const Wrapper = styled.div`
       font-size: 1.5rem;
       padding: 10px 20px;
       width: 100%;
+
+      &:disabled {
+        opacity: 0.4;
+      }
     }
   }
 

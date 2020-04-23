@@ -1,26 +1,46 @@
 // Node modules.
 import get from 'lodash/get';
+import { AuthenticationDetails, CognitoUserPool, CognitoUser } from 'amazon-cognito-identity-js';
 // Relative imports.
-import request, { delay, FAKE_API_TIMEOUT_MS } from 'utils/request';
+import history from 'store/history';
+import { deriveCurrentUser } from 'utils/auth';
+import { delay, FAKE_API_TIMEOUT_MS } from 'utils/request';
 
 export const loginApi = async (credentials = {}, options = {}) => {
   // Fake the request if desired.
   if (get(options, 'fake')) {
     await delay(FAKE_API_TIMEOUT_MS);
-    return 'b8fa48a5-cee3-48c1-9dc9-6507893810a6';
+    return undefined;
   }
 
-  // Make the request.
-  const response = await request(`${process.env.REACT_APP_API_URL}/login`, {
-    data: credentials,
-    method: 'POST',
+  // Derive the auth details.
+  const authenticationDetails = new AuthenticationDetails({
+    Username: get(credentials, 'email'),
+    Password: get(credentials, 'password'),
   });
 
-  // Derive the token.
-  const token = get(response, 'token');
+  // Derive the user pool.
+  const userPool = new CognitoUserPool({
+    ClientId: process.env.REACT_APP_COGNITO_CLIENT_ID,
+    UserPoolId: process.env.REACT_APP_COGNITO_USER_POOL_ID,
+  });
 
-  // Return the token.
-  return token;
+  // Derive the current user.
+  const currentUser = new CognitoUser({
+    Pool: userPool,
+    Username: get(credentials, 'email'),
+  });
+
+  // Attempt to authenticate the user.
+  await currentUser.authenticateUser(authenticationDetails, {
+    onFailure: (error) => {
+      throw new Error(error);
+    },
+    onSuccess: () => {
+      // Navigate to the dashboard.
+      history.push('/');
+    },
+  });
 };
 
 export const logoutApi = async (options = {}) => {
@@ -30,9 +50,17 @@ export const logoutApi = async (options = {}) => {
     return undefined;
   }
 
-  // Make the request.
-  await request(`${process.env.REACT_APP_API_URL}/logout`, { method: 'DELETE' });
+  // Derive the current user.
+  const currentUser = deriveCurrentUser();
 
-  // Return nothing.
-  return undefined;
+  // Escape early if there's no current user.
+  if (!currentUser) {
+    return;
+  }
+
+  // Attempt to log out.
+  currentUser.signOut();
+
+  // Navigate to login.
+  history.push('/login');
 };

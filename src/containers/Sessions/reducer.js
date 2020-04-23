@@ -7,6 +7,8 @@ const initialState = {
   // Loading states.
   loggingIn: false,
   loggingOut: false,
+  // Data.
+  session: undefined,
 };
 
 export default (state = initialState, action) => {
@@ -18,7 +20,7 @@ export default (state = initialState, action) => {
       return { ...state, error: action.error, loggingIn: false };
     }
     case LOGIN_SUCCESS: {
-      return { ...state, loggingIn: false };
+      return { ...state, loggingIn: false, session: action.session };
     }
     case LOGOUT: {
       return { ...state, error: '', loggingOut: true };

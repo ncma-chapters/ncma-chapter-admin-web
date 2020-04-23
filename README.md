@@ -22,6 +22,8 @@ If you're planning on just testing locally without actually interfacing with an 
 
 1. `REACT_APP_API_URL` (The base URL of the API you want to use.)
 1. `REACT_APP_FAKE_API` (Whether you want to fake the API requests + responses.)
+1. `REACT_APP_COGNITO_CLIENT_ID` (AWS Cognito clientID)
+1. `REACT_APP_COGNITO_USER_POOL_ID` (AWS Cognito userPoolID)
 
 #### How to use different environment variables for development:
 

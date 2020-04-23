@@ -9,10 +9,10 @@ import { loginFailure, loginSuccess, logoutFailure, logoutSuccess } from './acti
 function* loginSaga({ credentials }) {
   try {
     // Make the request.
-    const token = yield call(loginApi, credentials, { fake: process.env.REACT_APP_FAKE_API });
+    yield call(loginApi, credentials, { fake: process.env.REACT_APP_FAKE_API });
 
     // Update our state.
-    yield put(loginSuccess(token));
+    yield put(loginSuccess());
   } catch (error) {
     yield call(handleSagaError, error, { actionCreators: [loginFailure] });
   }

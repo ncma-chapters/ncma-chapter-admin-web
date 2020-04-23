@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 // Relative imports.
-import logo from 'assets/logo.svg';
 import Spinner from 'components/Spinner';
+import logo from 'assets/logo.svg';
 import { loginAction } from 'containers/Sessions/actions';
 import { Wrapper } from './styles';
 
@@ -25,25 +25,14 @@ class Login extends Component {
     };
   }
 
-  componentDidMount() {
-    document.addEventListener('keydown', this.onKeyDown);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.onKeyDown);
-  }
-
-  onKeyDown = (event) => {
-    if (event.keyCode === 13) {
-      this.onLogin();
-    }
-  };
-
   onStateChange = (key) => (event) => {
     this.setState({ [key]: event.target.value });
   };
 
-  onLogin = () => {
+  onLogin = (event) => {
+    // Prevent default browser behavior.
+    event.preventDefault();
+
     const { isValid } = this;
     const { email, password } = this.state;
 
@@ -100,7 +89,7 @@ class Login extends Component {
 
         <form onSubmit={onLogin}>
           {/* Email */}
-          <input onChange={onStateChange('email')} placeholder="Email" type="email" value={email} />
+          <input autoFocus onChange={onStateChange('email')} placeholder="Email" type="email" value={email} />
 
           {/* Password */}
           <input onChange={onStateChange('password')} placeholder="Password" type="password" value={password} />
@@ -111,7 +100,7 @@ class Login extends Component {
           </Link>
 
           {/* Submit */}
-          <button disabled={!isValid()} type="submit">
+          <button disabled={!isValid()} onClick={onLogin} type="submit">
             {loggingIn ? <Spinner /> : 'Login'}
           </button>
 

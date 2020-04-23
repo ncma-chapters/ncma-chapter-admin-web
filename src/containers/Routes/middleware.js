@@ -4,7 +4,7 @@ import { takeLatest } from 'redux-saga/effects';
 import { APP_INIT } from './constants';
 
 export function* appInitSaga() {
-  // Add app init logic here.
+  // Add appInit logic here.
 }
 
 export default [takeLatest(APP_INIT, appInitSaga)];
