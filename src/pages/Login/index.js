@@ -2,10 +2,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 // Relative imports.
+import logo from 'assets/logo.svg';
 import Spinner from 'primitives/Spinner';
 import { loginAction } from 'containers/Sessions/actions';
-import { EmailField, LinkButton, Options, PasswordField, StyledButton, Title, Well, Wrapper } from './styles';
+import { Wrapper } from './styles';
 
 class Login extends Component {
   static propTypes = {
@@ -25,9 +27,6 @@ class Login extends Component {
 
   componentDidMount() {
     document.addEventListener('keydown', this.onKeyDown);
-
-    // @WARNING: On Chrome iOS autofill often does not fire off onChange handlers.
-    // https://github.com/facebook/react/issues/1159
   }
 
   componentWillUnmount() {
@@ -86,32 +85,44 @@ class Login extends Component {
 
     return (
       <Wrapper>
-        <Well>
-          <Title>Sign In</Title>
+        {/* Logo Banner */}
+        <div className="logo-wrapper">
+          <img alt="logo" src={logo} />
+        </div>
 
-          {/* EMAIL */}
-          <EmailField onChange={onStateChange('email')} placeholder="Email" type="email" value={email} />
+        {/* Title Banner */}
+        <div className="title-wrapper">
+          <h1>ADMIN DASHBOARD</h1>
+        </div>
 
-          {/* PASSWORD */}
-          <PasswordField onChange={onStateChange('password')} placeholder="Password" type="password" value={password} />
+        {/* Title */}
+        <h2>LOGIN</h2>
 
-          {/* LOGIN */}
-          <StyledButton disabled={!isValid()} onClick={onLogin}>
-            {loggingIn ? <Spinner /> : 'Sign In'}
-          </StyledButton>
+        <form onSubmit={onLogin}>
+          {/* Email */}
+          <input onChange={onStateChange('email')} placeholder="Email" type="email" value={email} />
 
-          <Options>
-            {/* REGISTER LINK */}
-            <LinkButton onClick={toResetPassword} to="/register">
-              Sign Up
-            </LinkButton>
+          {/* Password */}
+          <input onChange={onStateChange('password')} placeholder="Password" type="password" value={password} />
 
-            {/* FORGOT PASSWORD */}
-            <LinkButton onClick={toResetPassword} to="/reset-password">
-              Forgot Password
-            </LinkButton>
-          </Options>
-        </Well>
+          {/* Forgot Password */}
+          <Link onClick={toResetPassword} to="/reset-password">
+            Forgot password?
+          </Link>
+
+          {/* Submit */}
+          <button disabled={!isValid()} type="submit">
+            {loggingIn ? <Spinner /> : 'Login'}
+          </button>
+
+          {/* Register Link */}
+          <p>
+            New to the NCMA Admin Dashboard?
+            <Link onClick={toResetPassword} to="/register">
+              Register here
+            </Link>
+          </p>
+        </form>
       </Wrapper>
     );
   }

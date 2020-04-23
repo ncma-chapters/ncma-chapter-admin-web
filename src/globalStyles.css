@@ -2,6 +2,7 @@ html,
 body {
   -webkit-font-smoothing: antialiased;
   background: #ffffff;
+  box-sizing: border-box;
   cursor: default;
   display: flex;
   flex-direction: column;
@@ -24,6 +25,10 @@ a {
 
 div {
   outline: none;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 #root {

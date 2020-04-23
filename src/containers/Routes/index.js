@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Router, Switch, Route } from 'react-router-dom';
 // Relative imports.
+import AuthenticatedRoute from 'components/AuthenticatedRoute';
 import FallbackRoute from 'pages/FallbackRoute';
 import history from 'store/history';
-// Relative imports.
-import { appInitAction } from './actions';
 import { Container } from './styles';
+import { appInitAction } from './actions';
 
 // Lazy load pages.
 const Dashboard = lazy(() => import('pages/Dashboard'));
@@ -33,9 +33,9 @@ class Routes extends Component {
           <Suspense fallback={<FallbackRoute />}>
             <Switch>
               {/* UNAUTHENTICATED ROUTES */}
-              <Route path="/" exact component={Login} />
+              <Route path="/login" exact component={Login} />
               {/* AUTH MODEL-BASED ROUTES */}
-              <Route path="/dashboard" exact component={Dashboard} />
+              <AuthenticatedRoute path="/" exact component={Dashboard} />
               {/* 404 | NOT FOUND */}
               <Route component={NotFound} />
             </Switch>
