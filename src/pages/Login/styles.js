@@ -81,12 +81,15 @@ export const Wrapper = styled.div`
     }
 
     button {
+      align-items: center;
       background: #d88661;
       border-radius: 3px;
       border: none;
       color: #ffffff;
       cursor: pointer;
+      display: flex;
       font-size: 1.5rem;
+      justify-content: center;
       padding: 10px 20px;
       width: 100%;
 
@@ -98,7 +101,7 @@ export const Wrapper = styled.div`
 
   p {
     color: #908c8c;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     margin: 65px 0 0;
 
     a {

@@ -65,6 +65,7 @@ export const Wrapper = styled.div`
         background: none;
         border: none;
         color: #ffffff;
+        cursor: pointer;
         font-size: 1rem;
         outline: none;
       }

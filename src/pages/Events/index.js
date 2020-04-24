@@ -66,7 +66,7 @@ class Events extends Component {
             {/* No Events */}
             {isEmpty(eventIDs) && (
               <div className="no-events">
-                <h2>It&apos;s sad but true. There&apos;s no events here, yet.</h2>
+                <h2>It&apos;s sad but true. There are no events here, yet.</h2>
                 <Link to="/events/create">Create your first event!</Link>
                 <img alt="no events" src={boxIcon} />
               </div>
