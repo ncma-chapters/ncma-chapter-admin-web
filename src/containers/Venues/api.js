@@ -36,7 +36,7 @@ export const fetchVenuesApi = async (options = {}) => {
   // Fake the request if desired.
   if (get(options, 'fake')) {
     await delay(FAKE_API_TIMEOUT_MS);
-    return FAKE_VENUE;
+    return [FAKE_VENUE, FAKE_VENUE, FAKE_VENUE];
   }
 
   // Make the request.

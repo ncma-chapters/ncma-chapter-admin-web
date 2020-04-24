@@ -63,8 +63,9 @@ export const fetchEventsFailure = (error) => ({
   type: FETCH_EVENTS_FAILURE,
 });
 
-export const fetchEventsSuccess = (events) => ({
-  events,
+export const fetchEventsSuccess = (eventIDs, eventsLookup) => ({
+  eventIDs,
+  eventsLookup,
   type: FETCH_EVENTS_SUCCESS,
 });
 

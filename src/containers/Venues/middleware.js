@@ -1,5 +1,8 @@
 // Node modules.
 import { call, put, takeLatest } from 'redux-saga/effects';
+import get from 'lodash/get';
+import map from 'lodash/map';
+import reduce from 'lodash/reduce';
 // Relative imports.
 import { handleSagaError } from 'utils/sagaHelpers';
 import { CREATE_VENUE, DELETE_VENUE, FETCH_VENUES, UPDATE_VENUE } from './constants';
@@ -44,8 +47,19 @@ function* fetchVenuesSaga() {
     // Make the request.
     const venues = yield call(fetchVenuesApi, { fake: process.env.REACT_APP_FAKE_API });
 
+    // Derive venueIDs and venuesLookup.
+    const venueIDs = map(venues, 'id');
+    const venuesLookup = reduce(
+      venues,
+      (venuesLookup, venue) => {
+        venuesLookup[get(venue, 'id')] = venue;
+        return venuesLookup;
+      },
+      {},
+    );
+
     // Update our state.
-    yield put(fetchVenuesSuccess(venues));
+    yield put(fetchVenuesSuccess(venueIDs, venuesLookup));
   } catch (error) {
     yield call(handleSagaError, error, { actionCreators: [fetchVenuesFailure] });
   }

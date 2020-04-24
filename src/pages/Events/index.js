@@ -1,16 +1,18 @@
 // Node modules.
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 // Relative imports.
 import NavTop from 'components/NavTop';
 import boxIcon from 'assets/box.svg';
 import pencilIcon from 'assets/pencil.svg';
 import { fetchEventsAction, updateEventAction } from 'containers/Events/actions';
+import { fetchVenuesAction } from 'containers/Venues/actions';
 import { Wrapper } from './styles';
 
 class Events extends Component {
@@ -21,11 +23,13 @@ class Events extends Component {
     venuesLookup: PropTypes.object.isRequired,
     // From mapDispatchToProps.
     fetchEvents: PropTypes.func.isRequired,
+    fetchVenues: PropTypes.func.isRequired,
     updateEvent: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
     this.props.fetchEvents();
+    this.props.fetchVenues();
   }
 
   onPublishEvent = (eventID) => {
@@ -80,7 +84,7 @@ class Events extends Component {
 
               // Derive venue properties.
               const venue = get(venuesLookup, `[${get(event, 'venueID')}]`);
-              const venueName = get(venue, 'name');
+              const venueName = get(venue, 'name', 'Unknown venue');
 
               return (
                 <div className="item" key={id}>
@@ -89,7 +93,7 @@ class Events extends Component {
 
                   {/* Event Info */}
                   <div className="item-info">
-                    <p className="starts-at">{startsAt}</p>
+                    <p className="starts-at">{moment(startsAt).format('ddd, MMM D, YYYY, h:mm A')}</p>
                     <p className="title">{title}</p>
                     <p className="venue-name">{venueName}</p>
                     <p className="price">Free</p>
@@ -127,6 +131,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchEvents: () => dispatch(fetchEventsAction()),
+  fetchVenues: () => dispatch(fetchVenuesAction()),
   updateEvent: (event) => dispatch(updateEventAction(event)),
 });
 

@@ -36,7 +36,7 @@ export const fetchEventsApi = async (options = {}) => {
   // Fake the request if desired.
   if (get(options, 'fake')) {
     await delay(FAKE_API_TIMEOUT_MS);
-    return FAKE_EVENT;
+    return [FAKE_EVENT, FAKE_EVENT, FAKE_EVENT];
   }
 
   // Make the request.

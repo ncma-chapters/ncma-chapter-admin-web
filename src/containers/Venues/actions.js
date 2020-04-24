@@ -63,8 +63,9 @@ export const fetchVenuesFailure = (error) => ({
   type: FETCH_VENUES_FAILURE,
 });
 
-export const fetchVenuesSuccess = (venues) => ({
-  venues,
+export const fetchVenuesSuccess = (venueIDs, venuesLookup) => ({
+  venueIDs,
+  venuesLookup,
   type: FETCH_VENUES_SUCCESS,
 });
 

@@ -1,4 +1,7 @@
 // Node modules.
+import get from 'lodash/get';
+import map from 'lodash/map';
+import reduce from 'lodash/reduce';
 import { call, put, takeLatest } from 'redux-saga/effects';
 // Relative imports.
 import { handleSagaError } from 'utils/sagaHelpers';
@@ -44,8 +47,19 @@ function* fetchEventsSaga() {
     // Make the request.
     const events = yield call(fetchEventsApi, { fake: process.env.REACT_APP_FAKE_API });
 
+    // Derive eventIDs and eventsLookup.
+    const eventIDs = map(events, 'id');
+    const eventsLookup = reduce(
+      events,
+      (eventsLookup, event) => {
+        eventsLookup[get(event, 'id')] = event;
+        return eventsLookup;
+      },
+      {},
+    );
+
     // Update our state.
-    yield put(fetchEventsSuccess(events));
+    yield put(fetchEventsSuccess(eventIDs, eventsLookup));
   } catch (error) {
     yield call(handleSagaError, error, { actionCreators: [fetchEventsFailure] });
   }

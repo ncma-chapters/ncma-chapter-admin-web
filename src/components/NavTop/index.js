@@ -19,13 +19,13 @@ const NavTop = ({ logout, user }) => (
 
       {/* Navigation Items */}
       <div className="nav-items">
-        <Link className={window.location.pathname === '/events'} to="/events">
+        <Link className={window.location.pathname === '/events' ? 'selected' : ''} to="/events">
           Events
         </Link>
-        {/* <Link className={window.location.pathname === '/tags'} to="/tags">
+        {/* <Link className={window.location.pathname === '/tags' ? 'selected' : ''} to="/tags">
           Tags
         </Link> */}
-        <Link className={window.location.pathname === '/venues'} to="/venues">
+        <Link className={window.location.pathname === '/venues' ? 'selected' : ''} to="/venues">
           Venues
         </Link>
       </div>
