@@ -2,11 +2,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-// Relative imports.
-import Routes from 'containers/Routes';
-import rootSaga from 'store/sagas';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
 // Relative imports.
 import './globalStyles.css';
+import Routes from 'containers/Routes';
+import rootSaga from 'store/sagas';
 import * as serviceWorker from './serviceWorker';
 import { configureStore } from './store';
 
@@ -16,11 +17,9 @@ store.runSaga(rootSaga);
 
 // Render the app.
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Routes />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Routes />
+  </Provider>,
   document.getElementById('root'),
 );
 

@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
 
   * {
     animation: ${bounceDelay} 1.4s infinite ease-in-out both;
-    background: #000000;
+    background: #888888;
     border-radius: 100%;
     flex: 1;
     height: 18px;

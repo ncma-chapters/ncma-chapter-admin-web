@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // Relative imports.
 import NavTop from 'components/NavTop';
+import Spinner from 'components/Spinner';
 import boxIcon from 'assets/box.svg';
 import pencilIcon from 'assets/pencil.svg';
 import { fetchEventsAction, updateEventAction } from 'containers/Events/actions';
@@ -18,6 +19,7 @@ import { Wrapper } from './styles';
 class Events extends Component {
   static propTypes = {
     // From mapStateToProps.
+    fetching: PropTypes.bool.isRequired,
     eventIDs: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     eventsLookup: PropTypes.object.isRequired,
     venuesLookup: PropTypes.object.isRequired,
@@ -44,7 +46,7 @@ class Events extends Component {
 
   render() {
     const { onPublishEvent } = this;
-    const { eventsLookup, eventIDs, venuesLookup } = this.props;
+    const { fetching, eventsLookup, eventIDs, venuesLookup } = this.props;
 
     return (
       <Wrapper>
@@ -63,8 +65,11 @@ class Events extends Component {
           <div className="results-filters"></div>
 
           <div className="items">
+            {/* Fetching */}
+            {fetching && <Spinner />}
+
             {/* No Events */}
-            {isEmpty(eventIDs) && (
+            {!fetching && isEmpty(eventIDs) && (
               <div className="no-events">
                 <h2>It&apos;s sad but true. There are no events here, yet.</h2>
                 <Link to="/events/create">Create your first event!</Link>
@@ -102,7 +107,7 @@ class Events extends Component {
                   {/* Event Actions */}
                   <div className="actions">
                     {/* Edit Event */}
-                    <Link to={`/events/${eventID}`}>
+                    <Link to={`/events/${eventID}/edit`}>
                       <img alt="edit event" src={pencilIcon} />
                     </Link>
 
@@ -124,6 +129,7 @@ class Events extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  fetching: state.eventsReducer.fetching,
   eventsLookup: state.eventsReducer.eventsLookup,
   eventIDs: state.eventsReducer.eventIDs,
   venuesLookup: state.venuesReducer.venuesLookup,
